@@ -6,6 +6,16 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
   	extend: {
+		 fontFamily: {
+        sans: ["Manrope", "sans-serif"],
+        'sans-extralight': ["Manrope-ExtraLight", "sans-serif"],
+        'sans-light': ["Manrope-Light", "sans-serif"],
+        'sans-regular': ["Manrope-Regular", "sans-serif"],
+        'sans-medium': ["Manrope-Medium", "sans-serif"],
+        'sans-semibold': ["Manrope-SemiBold", "sans-serif"],
+        'sans-bold': ["Manrope-Bold", "sans-serif"],
+        'sans-extrabold': ["Manrope-ExtraBold", "sans-serif"],
+      },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

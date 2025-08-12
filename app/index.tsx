@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { View, Text, TextInput, TouchableOpacity, ScrollView, SafeAreaView, Alert, Linking } from "react-native"
-import { router } from "expo-router"
 import { Ionicons } from "@expo/vector-icons"
+import { router } from "expo-router"
+import { useState } from "react"
+import { Alert, Linking, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native"
 import '../global.css'
 
 // Mock data for first aid guides
@@ -160,8 +160,8 @@ export default function FirstAidApp() {
               <Ionicons name="medical" size={24} color="white" />
             </View>
             <View className="flex-1">
-              <Text className="text-2xl font-bold text-gray-900">First Aid Quick Guide</Text>
-              <Text className="text-gray-600">Instant emergency instructions - works offline</Text>
+              <Text className="text-2xl font-sans-bold text-gray-900">First Aid Quick Guide</Text>
+              <Text className="text-gray-600 font-sans-medium">Instant emergency instructions</Text>
             </View>
           </View>
 
@@ -180,7 +180,7 @@ export default function FirstAidApp() {
         <View className="p-4">
           {/* Category Filter */}
           <View className="mb-6">
-            <Text className="text-lg font-semibold mb-3">Categories</Text>
+            <Text className="text-lg font-sans-semibold mb-3">Categories</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <View className="flex-row gap-2">
                 {categories.map((category) => (
@@ -205,7 +205,7 @@ export default function FirstAidApp() {
             <View className="mb-6">
               <View className="flex-row items-center mb-3">
                 <Ionicons name="star" size={20} color="#EAB308" />
-                <Text className="text-lg font-semibold ml-2">Quick Access</Text>
+                <Text className="text-lg font-sans-semibold ml-2">Quick Access</Text>
               </View>
               <View className="gap-3">
                 {firstAidGuides
@@ -214,15 +214,15 @@ export default function FirstAidApp() {
                     <TouchableOpacity
                       key={guide.id}
                       onPress={() => router.push(`/guide/${guide.id}`)}
-                      className="bg-white rounded-lg p-4 border border-gray-200"
+                      className="bg-white rounded-2xl p-4 border border-gray-200"
                     >
                       <View className="flex-row items-center justify-between">
                         <View className="flex-1">
-                          <Text className="font-semibold text-base">{guide.title}</Text>
-                          <Text className="text-sm text-gray-600">{guide.category}</Text>
+                          <Text className="font-sans-semibold text-base">{guide.title}</Text>
+                          <Text className="text-sm font-sans-medium text-gray-600">{guide.category}</Text>
                         </View>
-                        <View className={`px-2 py-1 rounded ${getSeverityColor(guide.severity)}`}>
-                          <Text className="text-white text-xs font-medium">{guide.severity}</Text>
+                        <View className={`px-2 py-1 rounded-2xl ${getSeverityColor(guide.severity)}`}>
+                          <Text className="text-white text-xs font-sans-medium">{guide.severity}</Text>
                         </View>
                       </View>
                     </TouchableOpacity>
@@ -234,7 +234,7 @@ export default function FirstAidApp() {
 
           {/* Emergency Guides Grid */}
           <View className="mb-6">
-            <Text className="text-lg font-semibold mb-3">
+            <Text className="text-lg font-sans-semibold mb-3">
               {searchTerm ? `Search Results (${filteredGuides.length})` : "All Emergency Guides"}
             </Text>
 
@@ -248,11 +248,11 @@ export default function FirstAidApp() {
                   <TouchableOpacity
                     key={guide.id}
                     onPress={() => router.push(`/guide/${guide.id}`)}
-                    className="bg-white rounded-lg p-4 border border-gray-200"
+                    className="bg-white rounded-2xl p-4 border border-gray-200"
                   >
                     <View className="flex-row items-start justify-between mb-2">
-                      <View className={`px-2 py-1 rounded ${getSeverityColor(guide.severity)}`}>
-                        <Text className="text-white text-xs font-medium">{guide.severity}</Text>
+                      <View className={`px-2 py-1 rounded-2xl ${getSeverityColor(guide.severity)}`}>
+                        <Text className="text-white text-xs font-sans-medium">{guide.severity}</Text>
                       </View>
                       <TouchableOpacity onPress={() => toggleFavorite(guide.id)} className="p-1">
                         <Ionicons
@@ -263,9 +263,9 @@ export default function FirstAidApp() {
                       </TouchableOpacity>
                     </View>
 
-                    <Text className="font-semibold text-lg mb-1">{guide.title}</Text>
-                    <Text className="text-sm text-gray-600 mb-3">{guide.category}</Text>
-                    <Text className="text-sm text-gray-500">{guide.steps.length} steps • Tap to view</Text>
+                    <Text className="font-sans-semibold text-lg mb-1">{guide.title}</Text>
+                    <Text className="text-sm font-sans-mediumtext-gray-600 mb-3">{guide.category}</Text>
+                    <Text className="text-sm font-sans-regular text-gray-500">{guide.steps.length} steps • Tap to view</Text>
                   </TouchableOpacity>
                 ))}
               </View>
@@ -273,22 +273,22 @@ export default function FirstAidApp() {
           </View>
 
           {/* Emergency Contacts Footer */}
-          <View className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <View className="bg-red-50 border border-red-200 rounded-2xl p-4">
             <View className="flex-row items-center mb-3">
               <Ionicons name="warning" size={20} color="#DC2626" />
-              <Text className="font-semibold text-red-800 ml-2">Emergency Contacts</Text>
+              <Text className="font-sans-semibold text-red-800 ml-2">Emergency Contacts</Text>
             </View>
             <View className="gap-2">
               <TouchableOpacity
                 onPress={() => callEmergency("911")}
-                className="bg-white border border-gray-300 rounded-lg p-3 flex-row items-center"
+                className="bg-white border border-gray-300 rounded-2xl p-3 flex-row items-center"
               >
                 <Ionicons name="call" size={20} color="#374151" />
                 <Text className="ml-2 text-gray-700">Emergency Services: 911</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => callEmergency("18002221222")}
-                className="bg-white border border-gray-300 rounded-lg p-3 flex-row items-center"
+                className="bg-white border border-gray-300 rounded-2xl p-3 flex-row items-center"
               >
                 <Ionicons name="call" size={20} color="#374151" />
                 <Text className="ml-2 text-gray-700">Poison Control: 1-800-222-1222</Text>

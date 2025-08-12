@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
-import { View, Text, ScrollView, TouchableOpacity, SafeAreaView, Alert, Linking } from "react-native"
-import { useLocalSearchParams } from "expo-router"
 import { Ionicons } from "@expo/vector-icons"
+import { useLocalSearchParams } from "expo-router"
+import { useState } from "react"
+import { Alert, Linking, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native"
 
 // Same mock data as index.tsx
 const firstAidGuides = [
@@ -157,12 +157,12 @@ export default function GuideDetail() {
           <View className="p-4 border-b border-gray-200">
             <View className="flex-row items-start justify-between">
               <View className="flex-1">
-                <Text className="text-2xl font-bold text-gray-900">{guide.title}</Text>
-                <Text className="text-lg text-gray-600 mt-2">{guide.category}</Text>
+                <Text className="text-2xl font-sans-bold text-gray-900">{guide.title}</Text>
+                <Text className="text-lg text-gray-600 font-sans-semibold mt-2">{guide.category}</Text>
               </View>
               <View className="flex-row items-center gap-3">
                 <View className={`px-3 py-1 rounded ${getSeverityColor(guide.severity)}`}>
-                  <Text className="text-white text-sm font-medium">{guide.severity}</Text>
+                  <Text className="text-white text-sm font-sans-medium">{guide.severity}</Text>
                 </View>
                 <TouchableOpacity onPress={() => toggleFavorite(guide.id)}>
                   <Ionicons
@@ -183,12 +183,12 @@ export default function GuideDetail() {
 
           {/* Steps */}
           <View className="p-4">
-            <Text className="font-semibold text-lg mb-4">Step-by-Step Instructions:</Text>
+            <Text className="font-sans-semibold text-lg mb-4">Step-by-Step Instructions:</Text>
             <View className="gap-4">
               {guide.steps.map((step, index) => (
                 <View key={index} className="flex-row gap-3">
                   <View className="w-8 h-8 bg-blue-500 rounded-full items-center justify-center">
-                    <Text className="text-white text-sm font-semibold">{index + 1}</Text>
+                    <Text className="text-white text-sm font-sans-semibold">{index + 1}</Text>
                   </View>
                   <Text className="flex-1 pt-1 text-base leading-6">{step}</Text>
                 </View>
@@ -201,7 +201,7 @@ export default function GuideDetail() {
             <View className="flex-row gap-2">
               <Ionicons name="warning" size={20} color="#DC2626" />
               <View className="flex-1">
-                <Text className="font-semibold text-red-800 mb-1">Important Warning:</Text>
+                <Text className="font-sans-semibold text-red-800 mb-1">Important Warning:</Text>
                 <Text className="text-red-700 leading-5">{guide.warning}</Text>
               </View>
             </View>
@@ -209,7 +209,7 @@ export default function GuideDetail() {
 
           {/* Emergency Contacts */}
           <View className="bg-blue-50 border border-blue-200 rounded-lg m-4 p-4">
-            <Text className="font-semibold text-blue-800 mb-3">Emergency Contacts:</Text>
+            <Text className="font-sans-semibold text-blue-800 mb-3">Emergency Contacts:</Text>
             <View className="gap-2">
               <TouchableOpacity
                 onPress={() => callEmergency("911")}
